@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Aoropeza\CustomerPartner\Block\Success;
+use Magento\Framework\Escaper;
+
+?>
+<?php
+
+
+/** @var Success $block */
+$title = $block->getTitle();
+$congrats = $block->getCongrats();
+$message = $block->getMessage();
+
+/** @var Escaper $escaper */
+?>
+<div class="secretsale-success">
+    <div class="block block-secretsale-success">
+        <div class="block-title">
+            <h1 class="secretsale-title" role="heading" aria-level="2"><?= $escaper->escapeHtml($title) ?></h1>
+        </div>
+        <div class="block-message">
+            <strong class="secretsale-congrats"><?= $escaper->escapeHtml($congrats) ?></strong>
+            <p class="secretsale-message"><?= $escaper->escapeHtml($message) ?></p>
+        </div>
+
+    </div>
+    <div class="block-content" aria-describedby="block-new-customer-header">
+        <div class="secretsale-effect">
+            <a href='/' class="button continue-shopping-button">
+                <span><?= $block->escapeHtml(__('Continue shopping')) ?></span>
+            </a>
+        </div>
+    </div>
+</div>

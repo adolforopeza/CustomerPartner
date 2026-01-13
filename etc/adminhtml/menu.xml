@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aoropeza_CustomerPartner::partner_section"
+             title="Partners"
+             module="Aoropeza_CustomerPartner"
+             sortOrder="50"
+             resource="Magento_Backend::content"
+             parent="Magento_Customer::customer"/>
+
+        <add id="Aoropeza_CustomerPartner::customer_partner"
+             title="Partners Section"
+             module="Aoropeza_CustomerPartner"
+             sortOrder="10"
+             resource="Magento_Backend::content"
+             parent="Aoropeza_CustomerPartner::partner_section"
+             action="customer/partner/index"/>
+    </menu>
+</config>

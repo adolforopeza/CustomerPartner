@@ -1,0 +1,23 @@
+{
+    "name": "aoropeza/customerpartner",
+    "version": "1.0.0",
+    "description": "Module for managing Customer Partners and specific login flows.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adolfo Oropeza",
+            "email": "adolforopeza01@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aoropeza\\CustomerPartner\\": ""
+        }
+    }
+}

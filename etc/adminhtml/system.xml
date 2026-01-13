@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aoropeza" translate="label" sortOrder="500">
+            <label>Dev Oropeza</label>
+        </tab>
+        <section id="partner" sortOrder="100" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Customer Partner</label>
+            <tab>aoropeza</tab>
+            <resource>Aoropeza_CustomerPartner::config_aoropeza_customerpartner</resource>
+            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Enable</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="settings" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Module Settings</label>
+                <field id="exclude_customer_group" type="multiselect" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Exclude Customers Group</label>
+                    <comment/>
+                    <source_model>Aoropeza\CustomerPartner\Model\Config\Source\CustomerGroup</source_model>
+                </field>
+            </group>
+            <group id="success" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Success Page</label>
+                <field id="title" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Title</label>
+                    <comment/>
+                </field>
+                <field id="congrats" type="textarea" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Congrats</label>
+                    <comment/>
+                </field>
+                <field id="message" type="textarea" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Message</label>
+                    <comment/>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
