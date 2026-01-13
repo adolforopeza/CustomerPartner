@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" type="Aoropeza\CustomerPartner\Model\CustomerPartnerRepository"/>
+	<preference for="Aoropeza\CustomerPartner\Api\Data\CustomerPartnerInterface" type="Aoropeza\CustomerPartner\Model\CustomerPartner"/>
+	<preference for="Aoropeza\CustomerPartner\Api\Data\CustomerPartnerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Aoropeza\CustomerPartner\Model\ResourceModel\CustomerPartner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">customer_partner</argument>
+			<argument name="resourceModel" xsi:type="string">Aoropeza\CustomerPartner\Model\ResourceModel\CustomerPartner\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="partner_listing_data_source" xsi:type="string">Aoropeza\CustomerPartner\Model\ResourceModel\CustomerPartner\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

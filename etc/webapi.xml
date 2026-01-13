@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/aoropeza-customerpartner/customer_partner" method="POST">
+		<service class="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Aoropeza_CustomerPartner::customer_partner_save"/>
+		</resources>
+	</route>
+	<route url="/V1/aoropeza-customerpartner/customer_partner/search" method="GET">
+		<service class="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Aoropeza_CustomerPartner::customer_partner_view"/>
+		</resources>
+	</route>
+	<route url="/V1/aoropeza-customerpartner/customer_partner/:customerPartnerId" method="GET">
+		<service class="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Aoropeza_CustomerPartner::customer_partner_view"/>
+		</resources>
+	</route>
+	<route url="/V1/aoropeza-customerpartner/customer_partner/:customerPartnerId" method="PUT">
+		<service class="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Aoropeza_CustomerPartner::customer_partner_update"/>
+		</resources>
+	</route>
+	<route url="/V1/aoropeza-customerpartner/customer_partner/:customerPartnerId" method="DELETE">
+		<service class="Aoropeza\CustomerPartner\Api\CustomerPartnerRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Aoropeza_CustomerPartner::customer_partner_delete"/>
+		</resources>
+	</route>
+</routes>

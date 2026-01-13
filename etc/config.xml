@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<partner>
+			<general>
+				<enable>0</enable>
+			</general>
+			<settings>
+				<exclude_customer_group>0</exclude_customer_group>
+			</settings>
+			<success>
+				<title>Partner Login</title>
+				<congrats>Congratulation Partner Login</congrats>
+				<message>Welcome Partner Login</message>
+			</success>
+		</partner>
+	</default>
+</config>
