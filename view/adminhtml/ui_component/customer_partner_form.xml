@@ -39,6 +39,8 @@
 	<fieldset name="general">
 		<settings>
 			<label>General</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
 		</settings>
         <field name="name" formElement="input" sortOrder="1">
             <argument name="data" xsi:type="array">
@@ -50,21 +52,6 @@
                 <dataType>text</dataType>
                 <label translate="true">Partner Name</label>
                 <dataScope>name</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field name="description" formElement="input" sortOrder="2">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">customer_partner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">Partner Description</label>
-                <dataScope>description</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
                 </validation>
@@ -133,4 +120,66 @@
             </formElements>
         </field>
 	</fieldset>
+    <fieldset name="description">
+		<settings>
+			<label>Description</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+		</settings>
+        <field name="description" formElement="wysiwyg" sortOrder="1">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_partner</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="short_description">
+		<settings>
+			<label>Short Description</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+		</settings>
+        <field name="short_description" formElement="wysiwyg" sortOrder="1">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_partner</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <label translate="true">Short Description</label>
+                <dataScope>short_description</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
 </form>
