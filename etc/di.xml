@@ -24,4 +24,7 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Captcha\Observer\CheckUserLoginObserver">
+        <plugin name="CustomerPartner_CaptchaRedirect" type="Aoropeza\CustomerPartner\Plugin\Account\CaptchaRedirect"/>
+    </type>
 </config>
