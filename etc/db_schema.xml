@@ -6,7 +6,8 @@
 			<column name="entity_id"/>
 		</constraint>
         <column name="name" nullable="true" xsi:type="varchar" comment="name" length="255"/>
-        <column name="description" nullable="true" xsi:type="varchar" comment="description" length="255"/>
+        <column name="description" nullable="true" xsi:type="text" comment="description" />
+		<column name="short_description" nullable="true" xsi:type="text" comment="short description"/>
 		<column name="url_key" nullable="true" xsi:type="varchar" comment="url_key" length="255"/>
 		<column name="customer_group_id" nullable="true" xsi:type="smallint" comment="customer_group_id" identity="false"/>
 		<column name="is_active" nullable="true" xsi:type="boolean" comment="is_active"/>

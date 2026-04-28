@@ -5,6 +5,7 @@ namespace Aoropeza\CustomerPartner\Controller\Index;
 use Aoropeza\CustomerPartner\Helper\Config;
 use Aoropeza\CustomerPartner\Model\CustomerPartnerRepository;
 use Magento\Customer\Model\Session;
+use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\RedirectFactory as ResultRedirectFactory;
@@ -41,16 +42,29 @@ class Index implements HttpGetActionInterface
      * @var CustomerPartnerRepository
      */
     protected $customerPartnerRepository;
+    /**
+     * Summary of logger
+     * @var LoggerInterface
+     */
     protected LoggerInterface $logger;
 
     /**
+     * Summary of sessionManager
+     * @var SessionManagerInterface
+     */
+    protected $sessionManager;
+
+    /**
+     * Summary of __construct
      * @param Session $customerSession
      * @param PageFactory $pageFactory
      * @param ResultRedirectFactory $resultRedirectFactory
      * @param ManagerInterface $messageManager
      * @param RequestInterface $request
      * @param CustomerPartnerRepository $customerPartnerRepository
+     * @param SessionManagerInterface $sessionManager
      * @param Config $config
+     * @param LoggerInterface $logger
      */
     public function __construct(
         Session $customerSession,
@@ -59,9 +73,11 @@ class Index implements HttpGetActionInterface
         ManagerInterface $messageManager,
         RequestInterface $request,
         CustomerPartnerRepository $customerPartnerRepository,
+        SessionManagerInterface $sessionManager,
         Config $config,
         LoggerInterface $logger
     ) {
+        $this->sessionManager = $sessionManager;
         $this->config = $config;
         $this->session = $customerSession;
         $this->pageFactory = $pageFactory;
@@ -79,24 +95,41 @@ class Index implements HttpGetActionInterface
     {
         $page = $this->pageFactory->create();
         try {
+            $redirectPath = '';
+            $redirect = false;
+            // Get url_key from parameter passed by Router
+            $urlKey = explode("/", $this->request->getParam('url_key') ?? '');
+            if (is_array($urlKey)) {
+                if (!isset($urlKey[1])) {
+                    $redirectPath = '';
+                    $redirect = true;
+                } else {
+                    $redirect = false;
+                    $urlKey = $urlKey[1];
+                }
+            }
+
             if (!$this->config->isEnable()) {
-                $resultRedirect = $this->resultRedirectFactory->create();
-                $resultRedirect->setPath('');
-                return $resultRedirect;
+                $redirectPath = '';
+                $redirect = true;
             }
 
             // If user is already logged in, redirect to customer account
             if ($this->session->isLoggedIn()) {
+                $redirectPath = 'customer/account';
+                $redirect = true;
+            }
+
+            if ($redirect) {
                 $resultRedirect = $this->resultRedirectFactory->create();
-                $resultRedirect->setPath('customer/account');
+                $resultRedirect->setPath($redirectPath);
                 return $resultRedirect;
             }
-            // Get url_key from parameter passed by Router
-            $urlKey = $this->request->getParam('url_key');
+
 
             if ($urlKey) {
                 $customerPartner = $this->customerPartnerRepository->getByUrl($urlKey);
-
+                $this->sessionManager->setCustomerPartner($customerPartner->getId());
                 // If model is valid and has a name, set the title
                 if (is_object($customerPartner) && method_exists($customerPartner, 'getName')) {
 

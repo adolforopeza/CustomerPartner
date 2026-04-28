@@ -38,20 +38,27 @@ class LoginPostRedirect
 
         // If login failed and we are in Partner context, keep the origin URL
         if (!$this->customerSession->isLoggedIn() && $this->config->isEnable()) {
-            $referer = $_COOKIE[Config::ROUTER_URL_KEY] ?? '';
-            if (!empty($referer)) {
-                $hasPartnerContext = isset($_COOKIE[Config::COOKIE_KEY]) && (strpos($referer, '/partner/') !== false);
-
-                if ($hasPartnerContext) {
-                    $redirect = $this->resultRedirectFactory->create();
-                    $redirectUrl = $referer ?: 'customer/account/login';
-                    $redirectUrl = $this->url->getUrl($redirectUrl);
-                    $redirect->setUrl($redirectUrl);
-                    return $redirect;
-                }
-            }
+            return $this->getPartnerRedirect($result);
         }
 
+        return $result;
+    }
+
+    /**
+     * Get partner redirect if applicable
+     *
+     * @param ResultInterface $result
+     * @return ResultInterface
+     */
+    private function getPartnerRedirect(ResultInterface $result): ResultInterface
+    {
+        $partnerUrlKey = $_COOKIE[Config::ROUTER_URL_KEY] ?? '';
+        if (!empty($partnerUrlKey)) {
+            $redirect = $this->resultRedirectFactory->create();
+            $redirectUrl = $this->url->getUrl('partner/' . $partnerUrlKey);
+            $redirect->setUrl($redirectUrl);
+            return $redirect;
+        }
         return $result;
     }
 }

@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Module for managing Customer Partners and specific login flows.",
     "type": "magento2-module",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Adolfo Oropeza",

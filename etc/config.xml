@@ -14,5 +14,14 @@
 				<message>Welcome Partner Login</message>
 			</success>
 		</partner>
+		<captcha>
+            <frontend>
+                <areas>
+                    <customer_partner_form_login>
+                        <label>Customer Partner Login</label>
+                    </customer_partner_form_login>
+                </areas>
+            </frontend>
+        </captcha>
 	</default>
 </config>

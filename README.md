@@ -1,4 +1,4 @@
-# Aoropeza_CustomerPartner Module
+# CustomerPartner for Magento 2
 
 This module enables the creation of unique Partner URLs that facilitate the automatic assignment of visitors to specific Customer Groups upon registration or login.
 
@@ -8,10 +8,10 @@ The core function of this module is to establish a 1:1 mapping between a specifi
 
 **Example Scenario:**
 -   **Partner A (e.g., eBay)**: You create a partner entry with URL key `ebay` linked to the "eBay Customers" group.
-    -   URL: `http://yourstore.com/ebay`
+    -   URL: `http://yourstore.com/partner/ebay`
     -   Result: Any user registering or logging in via this URL is assigned to the "eBay Customers" group.
 -   **Partner B (e.g., Amazon)**: You create a partner entry with URL key `amazon` linked to the "Amazon Customers" group.
-    -   URL: `http://yourstore.com/amazon`
+    -   URL: `http://yourstore.com/partner/amazon`
     -   Result: Any user registering or logging in via this URL is assigned to the "Amazon Customers" group.
 
 **Key Features:**

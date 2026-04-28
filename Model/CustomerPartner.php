@@ -68,6 +68,22 @@ class CustomerPartner extends AbstractModel implements CustomerPartnerInterface
     /**
      * @inheritDoc
      */
+    public function getShortDescription()
+    {
+        return $this->getData(self::SHORT_DESCRITION);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setShortDescription($shortdescription)
+    {
+        return $this->setData(self::SHORT_DESCRITION, $shortdescription);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getUrlKey()
     {
         return $this->getData(self::URL_KEY);

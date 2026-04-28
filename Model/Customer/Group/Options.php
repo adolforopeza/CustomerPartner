@@ -44,7 +44,7 @@ class Options implements OptionSourceInterface
     }
 
     /**
-     * Devuelve el array de grupos de clientes para un campo select.
+     * Returns the array of customer groups for a select field.
      *
      * @return array
      * @throws LocalizedException

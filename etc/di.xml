@@ -16,4 +16,15 @@
 			</argument>
 		</arguments>
 	</type>
+	<!-- enable captcha in the new form login -->
+	<type name="Magento\Captcha\Model\DefaultCaptcha">
+        <arguments>
+            <argument name="forms" xsi:type="array">
+                <item name="customer_partner_form_login" xsi:type="string">customer_partner_form_login</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Captcha\Observer\CheckUserLoginObserver">
+        <plugin name="CustomerPartner_CaptchaRedirect" type="Aoropeza\CustomerPartner\Plugin\Account\CaptchaRedirect"/>
+    </type>
 </config>

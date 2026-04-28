@@ -14,6 +14,7 @@ interface CustomerPartnerInterface
     const CUSTOMER_GROUP_ID = 'customer_group_id';
     const IS_ACTIVE = 'is_active';
     const URL_KEY = 'url_key';
+    const SHORT_DESCRITION = 'short_description';
 
     /**
      * Get ID
@@ -133,5 +134,18 @@ interface CustomerPartnerInterface
      * @return \Aoropeza\CustomerPartner\CustomerPartner\Api\Data\CustomerPartnerInterface
      */
     public function setDescription($description);
+
+    /**
+     * Get shor description
+     * @return string|null
+     */
+    public function getShortDescription();
+
+    /**
+     * Set shor description
+     * @param string $description
+     * @return \Aoropeza\CustomerPartner\CustomerPartner\Api\Data\CustomerPartnerInterface
+     */
+    public function setShortDescription($shortdescription);
 }
 
